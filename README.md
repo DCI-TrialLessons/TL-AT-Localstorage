@@ -5,3 +5,5 @@ Your task is to create a fake login system using LocalStorage! When the page ope
 If a username is already stored, show `Welcome back {username}, this is visit number {couter}]!` and a "Logout" button. Every time the page is loaded and a username is already logged in, inrement the counter. When the "Logout" is clicked, show a message with "Thank you, come again!".
 
 Show all messages in the DOM, do not use `alert()`.
+
+There are many ways of solving this, so Good Luck and Have Fun!
