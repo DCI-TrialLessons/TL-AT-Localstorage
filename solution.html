@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <style>
+            /* Hide all page variations by default */
+            body>div {
+                display: none;
+            }
+        </style>
+    </head>
+
+    <body>
+
+        <div id="loginView">
+            <input type="text" id="username" placeholder="Username">
+            <button id="doLogin">Login</button>
+        </div>
+
+        <div id="contentView">
+            <p>
+                Welcome back <b id="currentUser"></b>, this is visit
+                number <b id="counter"></b>!
+            </p>
+            <button id="logout">Logout</button>
+        </div>
+        <div id="messageView">
+            Thank you, come again!
+        </div>
+
+        <script>
+            const currentUser = localStorage.currentUser // or localStorage.getItem("currentUser")
+            let counter = localStorage.counter // or localStorage.getItem("counter")
+
+            if (currentUser) {
+                counter = Number(counter)
+                localStorage.setItem("counter", counter + 1)
+                document.querySelector("#currentUser").innerText = currentUser
+                document.querySelector("#counter").innerText = counter
+                document.querySelector("#contentView").style.display = "block"
+            } else {
+                document.querySelector("#loginView").style.display = "block"
+            }
+
+            document.querySelector("#doLogin").addEventListener("click", () => {
+                const username = document.querySelector("#username").value
+                localStorage.setItem("counter", 0)
+                localStorage.setItem("currentUser", username)
+                document.location.reload()
+            })
+
+            document.querySelector("#logout").addEventListener("click", () => {
+                document.querySelector("#contentView").style.display = "none"
+                document.querySelector("#messageView").style.display = "block"
+                localStorage.clear()
+            })
+        </script>
+
+    </body>
+
+</html>
